@@ -1,12 +1,32 @@
 import React from 'react';
 
+
+
+
+ 
+
+
 function App() {
-    return (
+  const now = new Date().toLocaleTimeString('en-US', { hour12: false, 
+    hour: "numeric", 
+    minute: "numeric"
+  })
+  
+  const [time, setTime] = React.useState(now);
+
+  function updateTime (){
+    const newTime = new Date().toLocaleTimeString('en-US', { hour12: false, 
+      hour: "numeric", 
+      minute: "numeric"
+    });
+    setTime(newTime);
+  }
+  
+  
+  return (
         <div className="container">
-      <h1>{new Date().toLocaleTimeString('en-US', { hour12: false, 
-                                             hour: "numeric", 
-                                             minute: "numeric"})}</h1>
-      <button>Get Time</button>
+      <h1>{time}</h1>
+      <button onClick={updateTime}>Get Time</button>
     </div>
     )
 }
